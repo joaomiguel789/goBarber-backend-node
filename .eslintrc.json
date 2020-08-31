@@ -41,7 +41,6 @@
                 "message": "Unexpected property on console object was called"
             }
         ]
-
        // "prettier/prettier": ["error", {"singleQuote": true, "parser": "flow"}]
     },
     "settings": {
