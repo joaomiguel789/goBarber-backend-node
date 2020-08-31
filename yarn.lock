@@ -489,6 +489,11 @@ currently-unhandled@^0.4.1:
   dependencies:
     array-find-index "^1.0.1"
 
+date-fns@^2.16.0:
+  version "2.16.0"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.0.tgz#d34f0f5f2fd498c984513042e8f7247ea86c4cb7"
+  integrity sha512-DWTRyfOA85sZ4IiXPHhiRIOs3fW5U6Msrp+gElXARa6EpoQTXPyHQmh7hr+ssw2nx9FtOQWnAMJKgL5vaJqILw==
+
 dateformat@~1.0.4-1.2.3:
   version "1.0.12"
   resolved "https://registry.yarnpkg.com/dateformat/-/dateformat-1.0.12.tgz#9f124b67594c937ff706932e4a642cca8dbbfee9"
