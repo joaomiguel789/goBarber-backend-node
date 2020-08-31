@@ -4,6 +4,8 @@
     },
     "extends": [
       "prettier/@typescript-eslint",
+      //"plugin:prettier/recommended",
+      //"airbnb-base",
       "plugin:@typescript-eslint/recommended"
     ],
     "globals": {
@@ -24,13 +26,13 @@
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "import/prefer-default-export": "off",
-      "import/extensions": [
+      /** "import/extensions": [
         "error",
         "ignorePackages",
         {
           "ts": "never"
         }
-      ],
+      ], **/
       "no-console": "off",
         "no-restricted-syntax": [
             "error",
@@ -39,6 +41,8 @@
                 "message": "Unexpected property on console object was called"
             }
         ]
+
+       // "prettier/prettier": ["error", {"singleQuote": true, "parser": "flow"}]
     },
     "settings": {
       "import/resolver": {
