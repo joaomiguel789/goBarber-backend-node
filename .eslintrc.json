@@ -4,7 +4,7 @@
     },
     "extends": [
       "prettier/@typescript-eslint",
-      //"plugin:prettier/recommended",
+      "plugin:prettier/recommended",
       //"airbnb-base",
       "plugin:@typescript-eslint/recommended"
     ],
@@ -25,14 +25,18 @@
     "rules": {
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
+      "class-methods-use-this": "off",
       "import/prefer-default-export": "off",
-      /** "import/extensions": [
+      /* "import/extensions": [
         "error",
         "ignorePackages",
         {
-          "ts": "never"
+          "js": "never",
+          "jsx": "never",
+          "ts": "never",
+          "tsx": "never"
         }
-      ], **/
+      ], */
       "no-console": "off",
         "no-restricted-syntax": [
             "error",
@@ -40,8 +44,12 @@
                 "selector": "CallExpression[callee.object.name='console'][callee.property.name!=/^(log|warn|error|info|trace)$/]",
                 "message": "Unexpected property on console object was called"
             }
-        ]
-       // "prettier/prettier": ["error", {"singleQuote": true, "parser": "flow"}]
+        ],
+        "prettier/prettier": ["error", {}, {
+          "fileInfoOptions": {
+            "withNodeModules": true
+          }
+        }]
     },
     "settings": {
       "import/resolver": {
