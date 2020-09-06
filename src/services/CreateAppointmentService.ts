@@ -1,8 +1,9 @@
 // Arquivo reponsável pela criacão de agendamentos
+import { startOfHour } from 'date-fns';
+import { getCustomRepository } from 'typeorm';
 
 import Appointment from '../models/Appointments';
 import AppointmentsRepository from '../repositories/AppointmentRepository';
-import { startOfHour } from 'date-fns';
 
 /**
  * [x] Recebimento das informações
@@ -23,16 +24,12 @@ interface RequestDTO {
  */
 
 class CreateAppointmentServices {
-  private appointmentRopository: AppointmentsRepository;
+  public async execute({ date, provider }: RequestDTO): Promise<Appointment> {
+    const appointmentsRepository = getCustomRepository(AppointmentsRepository);
 
-  constructor(appointmentsRepository: AppointmentsRepository) {
-    this.appointmentRopository = appointmentsRepository;
-  }
-
-  public execute({ provider, date }: RequestDTO): Appointment {
     const appointmentDate = startOfHour(date);
 
-    const findAppointmentInSameDate = this.appointmentRopository.findByDate(
+    const findAppointmentInSameDate = await appointmentsRepository.findByDate(
       appointmentDate,
     );
 
@@ -40,10 +37,13 @@ class CreateAppointmentServices {
       throw Error('This appointment is already booked');
     }
 
-    const appointment = this.appointmentRopository.create({
+    const appointment = appointmentsRepository.create({
       provider,
       date: appointmentDate,
     });
+
+    await appointmentsRepository.save(appointment);
+
     return appointment;
   }
 }
